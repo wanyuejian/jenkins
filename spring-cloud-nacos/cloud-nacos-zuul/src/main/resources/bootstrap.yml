@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: service-zuul
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+server:
+  port: 8766
+zuul:
+  prefix: /tyrone
+  ignored-services: "*"
+  routes:
+    service-consumer:    #相当于服务路由模块的名字，如果和serviceId一样，则serviceId可以不用设置
+      path: /echo/**   # 以/logo开始的请求均可以映射到service-id代表的微服务应用上
+      #serviceId: service-feign    #表示微服务模块的名字，必须与eureka保持一致
